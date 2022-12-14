@@ -1,7 +1,7 @@
 from ByteNode import ByteNode
-from LinkedListBinaryNum import LinkedListBinaryNum
+import pytest
 
-def _tests_byte_node():
+def test_byte_node():
     bn = ByteNode('10011000')
     assert bn.get_next() is None
 
@@ -9,17 +9,23 @@ def _tests_byte_node():
     assert bn.__repr__() == "[10011000]=>"
     bn2 = ByteNode('11111111')
     bn2.set_next(bn)
-    assert bn2.get_next().get_byte() == 10011000
+    assert bn2.get_next().get_byte() == '10011000'
 
-
-def _tests_init_linked_list_binary_num():
-    bn1 = LinkedListBinaryNum(0)
-    assert bn1.__repr__() == "LinkedListBinaryNum with 1 Byte, Bytes map: [00000000]=>None"
-    bn1 = LinkedListBinaryNum(255)
-    assert bn1.__repr__() == "LinkedListBinaryNum with 1 Byte, Bytes map: [11111111]=>None"
-    bn1 = LinkedListBinaryNum(4294967296)
-    assert bn1.__repr__() == "LinkedListBinaryNum with 5 Bytes, Bytes map: [00000001]=>[00000000]=>[00000000]=>[00000000]=>[00000000]=>None"
-
-def test_ByteNode():
-    with pytest.raises(ValueError, match="Error! byte inculdes only '0' or '1'"):
+# since the given string contain '2', we expect to get an error 
+def test_ByteNode_1():
+    with pytest.raises(ValueError):
         ByteNode('1020102')
+
+# since the length of the given string 
+# is bigger than 8, we expect to get an error 
+def test_ByteNode_2():
+    with pytest.raises(ValueError):
+        ByteNode('100010111111')
+
+# since the given input is of type 'int', we expect to get an error 
+def test_ByteNode_3():
+    with pytest.raises(ValueError):
+        ByteNode(10001011)
+
+
+
