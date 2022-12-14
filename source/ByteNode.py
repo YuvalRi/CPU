@@ -5,10 +5,11 @@ class ByteNode:
         '''
         if not isinstance(byte, str):
             raise ValueError("Error! byte must be of type string")
-        if len(str) != 8:
+        if len(byte) != 8:
             raise ValueError("Error! byte length must be eight")
-        if '0' or '1' not in str and len(set(str)) > 2:
-            raise ValueError("Error! byte inculdes only '0' or '1'")
+        for c in byte:
+            if c != '1' and c != '0':
+                raise ValueError("Error! byte inculdes only '0' or '1'")
         self.byte = byte
         self.next = None
     
@@ -32,3 +33,10 @@ class ByteNode:
     
     def __repr__(self):
         return f"[{self.byte}]=>"
+
+if __name__ == "__main__":
+    bn = ByteNode(byte='10011000')
+    print(bn)
+    bn2 = ByteNode('11111111')
+    bn2.set_next(bn)
+    print(bn2.get_next().get_byte())
