@@ -17,7 +17,7 @@ class LinkedListBinaryNum:
         remnant = len(binary) % 8
         my_str = binary.zfill(((8 - remnant) + len(binary)))
         self.head = ByteNode(my_str[:8])
-        self.size = (len(my_str))/8
+        self.size = (len(my_str))//8
         curr_pos = self.head
         for j in range(self.size - 1):
             pos = ByteNode(my_str[8*j:8*j + 8])
@@ -32,24 +32,13 @@ class LinkedListBinaryNum:
         self.head = ByteNode(byte)
 
     def __repr__(self):
+        curr_pos = self.head
+        st = ''
+        while curr_pos != None:
+            st += curr_pos.__repr__()
+            curr_pos = curr_pos.get_next()
+        st += 'None'
         if self.size == 1:
-            print(f"LinkedListBinaryNum with 1 Byte, Bytes map: {LinkedListBinaryNum}")
-        print(f"LinkedListBinaryNum with {self.size} Bytes, Bytes map: {LinkedListBinaryNum}")
-
-    def __str__(self):
+            return f"LinkedListBinaryNum with 1 Byte, Bytes map: {st}" 
+        return f"LinkedListBinaryNum with {self.size} Bytes, Bytes map: {st}" 
         
-
-
-
-if __name__ == "__main__":
-    # binary = bin(256)[2:]
-    # remnant = len(binary) % 8
-    # my_str = binary.zfill(((8 - remnant) + len(binary)))
-    # head = ByteNode(my_str[:8])
-    # size = (len(my_str)) / 8 
-    # my_str2 = [my_str[i:i+8] for i in range(0, len(my_str), 8)]
-    # for ele in my_str2[:len(my_str2)-1]:
-    #     print(ByteNode(ele), end =" ")
-    # print(f"{ByteNode(my_str2[len(my_str2)-1])}None")
-    # print(head)
-    # print(size)
