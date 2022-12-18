@@ -23,16 +23,22 @@ class LinkedListBinaryNum:
             pos = ByteNode(my_str[8*j:8*j + 8])
             curr_pos.next = pos
             curr_pos = pos
-        
-
         # my_str2 = [my_str[i:i+8] for i in range(0, len(my_str), 8)]
         # for ele in my_str2[:len(my_str2)-1]:
         #     print(ByteNode(ele), end =" ")
         # print(f"{ByteNode(my_str2[len(my_str2)-1])}None")
 
-
     def add_MSB(self, byte:  str):
-        pass 
+        self.head = ByteNode(byte)
+
+    def __repr__(self):
+        if self.size == 1:
+            print(f"LinkedListBinaryNum with 1 Byte, Bytes map: {LinkedListBinaryNum}")
+        print(f"LinkedListBinaryNum with {self.size} Bytes, Bytes map: {LinkedListBinaryNum}")
+
+    def __str__(self):
+        
+
 
 
 if __name__ == "__main__":
