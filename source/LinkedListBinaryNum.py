@@ -28,9 +28,19 @@ class LinkedListBinaryNum:
             curr_pos = pos
 
     def add_MSB(self, byte:  str):
-        self.head = ByteNode(byte)
+        '''
+        A function that adds a MSB node to LinkedListBinaryNum
+        '''
+        new_byte = ByteNode(byte)
+        new_byte.next = self.head
+        self.head = new_byte
+        self.size += 1
 
     def __repr__(self):
+        '''
+        A function that returns a string with all nodes 
+        that consists the binary representation
+        '''
         curr_pos = self.head
         st = ''
         while curr_pos != None:
