@@ -26,6 +26,7 @@ def tests_init_linked_list_binary_num():
         bn1 = LinkedListBinaryNum(i)
         assert bn1.__repr__() == f"LinkedListBinaryNum with 2 Bytes, Bytes map: [{bin(i)[2:].zfill(16)[:8]}]=>[{bin(i)[2:].zfill(16)[8:]}]=>None"
 
+tests_init_linked_list_binary_num()
 # def test_add_msb():
 #     bn1 = LinkedListBinaryNum(0)
 #     assert bn1.__repr__() == "LinkedListBinaryNum with 1 Byte, Bytes map: [00000000]=>None"
