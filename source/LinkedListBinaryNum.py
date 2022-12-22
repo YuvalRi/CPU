@@ -51,3 +51,20 @@ class LinkedListBinaryNum:
             return f"LinkedListBinaryNum with 1 Byte, Bytes map: {st}" 
         return f"LinkedListBinaryNum with {self.size} Bytes, Bytes map: {st}" 
         
+    def __str__(self):
+        '''
+        A function that returns a representive string
+        where bytes divided by "|" 
+        '''
+        curr_pos = self.head
+        st = '|'
+        while curr_pos != None:
+            st += curr_pos.byte + '|'
+            curr_pos = curr_pos.get_next()
+        return st
+
+        
+            
+        
+        
+        

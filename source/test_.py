@@ -39,15 +39,17 @@ def test_add_msb():
         assert bn1.__repr__() == f"LinkedListBinaryNum with {i+2} Bytes, Bytes map: {st}[00000000]=>None"
 
 
-# def test_str_func():
-#     bn = LinkedListBinaryNum(0)
-#     res_str = "00000000|"
-#     import random
-#     for i in range(50):
-#         byte = ''.join(random.choices(['0', '1'], k=8))
-#         bn.add_MSB(byte)
-#         res_str = f"{byte}|" + res_str
-#         assert bn.__str__() == f"|{res_str}"
+def test_str_func():
+    bn = LinkedListBinaryNum(0)
+    res_str = "00000000|"
+    import random
+    for i in range(50):
+        byte = ''.join(random.choices(['0', '1'], k=8))
+        bn.add_MSB(byte)
+        res_str = f"{byte}|" + res_str
+        assert bn.__str__() == f"|{res_str}"
+
+test_str_func()
 
 # def test_get_item():
 #     bn = LinkedListBinaryNum(12345678901234567890)
