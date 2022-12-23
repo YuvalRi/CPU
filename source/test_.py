@@ -49,13 +49,13 @@ def test_str_func():
         res_str = f"{byte}|" + res_str
         assert bn.__str__() == f"|{res_str}"
 
-test_str_func()
 
-# def test_get_item():
-#     bn = LinkedListBinaryNum(12345678901234567890)
-#     st = bn.__str__()
-#     lst = st.split("|")[1:-1]
-#     for i in range(len(lst) - 1):
-#         assert bn[i] == lst[i]
-#         assert bn[i] == bn[- bn.size + i]
-        
+def test_get_item():
+    bn = LinkedListBinaryNum(12345678901234567890)
+    st = bn.__str__()
+    lst = st.split("|")[1:-1]
+    for i in range(len(lst) - 1):
+        assert bn[i] == lst[i]
+        assert bn[i] == bn[- bn.size + i]
+
+test_get_item()

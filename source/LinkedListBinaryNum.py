@@ -62,9 +62,10 @@ class LinkedListBinaryNum:
             st += curr_pos.byte + '|'
             curr_pos = curr_pos.get_next()
         return st
-
-        
-            
-        
-        
-        
+    
+    def __len__(self):
+        '''
+        A function that returns the number of
+        nodes in the linked list
+        '''
+        return self.size

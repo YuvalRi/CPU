@@ -2,4 +2,4 @@
 venv
 *.docx
 __pycache__
-.pyc
+*.pyc
