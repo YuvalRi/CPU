@@ -58,4 +58,4 @@ def test_get_item():
         assert bn[i] == lst[i]
         assert bn[i] == bn[- bn.size + i]
 
-test_get_item()
+# test_get_item()

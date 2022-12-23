@@ -69,3 +69,19 @@ class LinkedListBinaryNum:
         nodes in the linked list
         '''
         return self.size
+
+    def __getitem__(self, item):
+        '''
+        A function which returns the byte in
+        the item index
+        '''
+        if not isinstance(item, int):
+            raise TypeError("Error! item must be of type integer!")
+        if item >= self.size or item < -self.size:
+            raise IndexError("Error! index is out of range!")
+        if item < 0:
+            item = self.size + item
+        curr_pos = self.head
+        for _ in range(item):
+            curr_pos = curr_pos.get_next()
+        return curr_pos.get_byte()
