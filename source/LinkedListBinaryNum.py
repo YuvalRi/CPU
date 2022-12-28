@@ -88,10 +88,21 @@ class LinkedListBinaryNum:
 
     def __eq__(self, other):
         '''
-        Operator overloading - equal to 
+        Operator overloading - equal to
         '''
         if not isinstance(other, LinkedListBinaryNum):
             raise TypeError("Error! other must be of type LinkedListBinaryNum!")
         if self.size == other.size and self.head == other.head:
             return True
         return False
+    
+    def __ne__(self, other):
+        '''
+        Operator overloading - not equal
+        '''
+        if not isinstance(other, LinkedListBinaryNum):
+            raise TypeError("Error! other must be of type LinkedListBinaryNum!")
+        if self.size != other.size or self.head != other.head:
+            return True
+        return False
+        
