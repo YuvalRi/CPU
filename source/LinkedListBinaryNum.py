@@ -85,3 +85,13 @@ class LinkedListBinaryNum:
         for _ in range(item):
             curr_pos = curr_pos.get_next()
         return curr_pos.get_byte()
+
+    def __eq__(self, other):
+        '''
+        Operator overloading - equal to 
+        '''
+        if not isinstance(other, LinkedListBinaryNum):
+            raise TypeError("Error! other must be of type LinkedListBinaryNum!")
+        if self.size == other.size and self.head == other.head:
+            return True
+        return False
