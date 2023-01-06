@@ -1,5 +1,6 @@
 from ByteNode import ByteNode
 from LinkedListBinaryNum import LinkedListBinaryNum
+import random
 
 def test_byte_node():
     bn = ByteNode('10011000')
@@ -42,7 +43,6 @@ def test_add_msb():
 def test_str_func():
     bn = LinkedListBinaryNum(0)
     res_str = "00000000|"
-    import random
     for i in range(50):
         byte = ''.join(random.choices(['0', '1'], k=8))
         bn.add_MSB(byte)
@@ -58,4 +58,41 @@ def test_get_item():
         assert bn[i] == lst[i]
         assert bn[i] == bn[- bn.size + i]
 
-# test_get_item()
+def test_eq():
+    for i in range(2**16):
+        assert LinkedListBinaryNum(i) == LinkedListBinaryNum(i)
+
+    for i in range(2**20):
+        r1 = random.randint(0, 2**24)
+        r2 = random.randint(0, 2**24)
+        assert (LinkedListBinaryNum(r1) == LinkedListBinaryNum(r2)) == (r1 == r2)
+
+def test_ne():
+    for i in range(2**20):
+        r1 = random.randint(0, 2**24)
+        r2 = random.randint(0, 2**24)
+        assert (LinkedListBinaryNum(r1) != LinkedListBinaryNum(r2)) == (r1 != r2)
+
+def test_lt():
+     for i in range(2**20):
+        r1 = random.randint(0, 2**24)
+        r2 = random.randint(0, 2**24)
+        assert (LinkedListBinaryNum(r1) < LinkedListBinaryNum(r2)) == (r1 < r2)
+
+def test_gt():
+     for i in range(2**20):
+        r1 = random.randint(0, 2**24)
+        r2 = random.randint(0, 2**24)
+        assert (LinkedListBinaryNum(r1) > LinkedListBinaryNum(r2)) == (r1 > r2)
+
+def test_ge():
+     for i in range(2**20):
+        r1 = random.randint(0, 2**24)
+        r2 = random.randint(0, 2**24)
+        assert (LinkedListBinaryNum(r1) >= LinkedListBinaryNum(r2)) == (r1 >= r2)
+
+def test_le():
+     for i in range(2**20):
+        r1 = random.randint(0, 2**24)
+        r2 = random.randint(0, 2**24)
+        assert (LinkedListBinaryNum(r1) <= LinkedListBinaryNum(r2)) == (r1 <= r2)

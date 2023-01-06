@@ -92,9 +92,16 @@ class LinkedListBinaryNum:
         '''
         if not isinstance(other, LinkedListBinaryNum):
             raise TypeError("Error! other must be of type LinkedListBinaryNum!")
-        if self.size == other.size and self.head == other.head:
-            return True
-        return False
+        if self.size != other.size:
+            return False
+        curr1 = self.head
+        curr2 = other.head
+        while curr1 is not None and curr2 is not None:
+            if curr1.byte != curr2.byte:
+                return False
+            curr1 = curr1.next
+            curr2 = curr2.next
+        return True
     
     def __ne__(self, other):
         '''
@@ -102,7 +109,59 @@ class LinkedListBinaryNum:
         '''
         if not isinstance(other, LinkedListBinaryNum):
             raise TypeError("Error! other must be of type LinkedListBinaryNum!")
-        if self.size != other.size or self.head != other.head:
+        if not self.__eq__(other):
             return True
         return False
         
+    def __lt__(self, other):
+        '''
+        Operator overloading - less than
+        '''
+        if not isinstance(other, LinkedListBinaryNum):
+            raise TypeError("Error! other must be of type LinkedListBinaryNum!")
+        if self.size < other.size:
+            return True
+        if self.size > other.size:
+            return False
+
+        curr1 = self.head
+        curr2 = other.head
+        while curr1 is not None and curr2 is not None:
+            if curr1.byte < curr2.byte:
+                return True
+            elif curr1.byte > curr2.byte:
+                return False
+            curr1 = curr1.next
+            curr2 = curr2.next
+        return False
+
+    def __gt__(self, other):
+        '''
+        Operator overloading - greater than
+        '''
+        if not isinstance(other, LinkedListBinaryNum):
+            raise TypeError("Error! other must be of type LinkedListBinaryNum!")
+        if not self.__eq__(other) and not self.__lt__(other):
+            return True
+        return False
+
+    def __ge__(self, other):
+        '''
+        Operator overloading - greater than or equal to
+        '''
+        if not isinstance(other, LinkedListBinaryNum):
+            raise TypeError("Error! other must be of type LinkedListBinaryNum!")
+        if not self.__lt__(other):
+            return True
+        return False
+
+    def __le__(self, other):
+        '''
+        Operator overloading - less than or equal to
+        '''
+        if not isinstance(other, LinkedListBinaryNum):
+            raise TypeError("Error! other must be of type LinkedListBinaryNum!")
+        if not self.__gt__(other):
+            return True
+        return False
+
